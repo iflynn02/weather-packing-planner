@@ -2,8 +2,9 @@ require("dotenv").config();
 require("./db");
 
 const express = require("express");
-const app = express();
 const path = require("path");
+
+const app = express();
 
 const Trip = require("./models/Trip");
 const plannerRoutes = require("./routes/planner");
@@ -11,6 +12,7 @@ const tripRoutes = require("./routes/trips");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.set("view engine", "ejs");
 
 app.get("/", async (req, res) => {
