@@ -1,8 +1,10 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color:rgb(111, 243, 245);
   padding: 2rem;
   line-height: 1.6;
+  font-size: 16px;
+  color: black;
 }
 
 h1 {
