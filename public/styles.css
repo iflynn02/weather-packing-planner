@@ -1,0 +1,87 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color:rgb(111, 243, 245);
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  margin-left: 10px;
+  padding: 5px;
+  background-color: lightyellow;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #0f1215;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+#packing-list {
+  background-color: lightyellow;
+  padding: 2rem;
+  border-radius: 5px;
+  list-style-type: disc;
+  width: 10rem;
+}
+ul {
+  background-color: lightyellow;
+  padding: 2rem;
+  border-radius: 5px;
+  list-style-type: disc;
+}
+
+#packing-list-body{
+  display: center;
+}
+#delete-button {
+  height: 1.6rem;
+  width: 3.8rem;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+  transition: filter 0.1s ease;
+}
+
+#delete-button:active {
+  filter: brightness(80%);
+}
+
+fieldset {
+  border-color: black;
+}
+
+.main-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+#palm {
+  width: 38rem;
+  max-height: 38rem;
+  object-fit: contain;
+}
+
+.content {
+  flex: 1;
+  max-width: 800px;
+}

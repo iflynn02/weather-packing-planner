@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Weather Packing Planner</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="main-layout">
+
+    <div class="content">
+      <h1>Pack For Your Trip</h1>
+
+      <form action="/planTrip" method="POST">
+        <label>City or ZIP:
+          <input type="text" name="city" placeholder="City or ZIP" required />
+        </label><br>
+
+        <label>State (optional):
+          <input type="text" name="state" placeholder="State" />
+        </label><br>
+
+        <label>Country:
+          <input type="text" name="country" value="United States" required />
+        </label><br>
+
+        <label>Start Date:
+          <input type="date" name="startDate" required />
+        </label><br>
+
+        <label>End Date:
+          <input type="date" name="endDate" required />
+        </label><br>
+
+        <fieldset>
+          <legend>Will you be swimming?</legend>
+          <label>
+            <input type="radio" name="nearWater" value="yes" required />
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="nearWater" value="no" />
+            No
+          </label>
+        </fieldset><br>
+
+        <div id="date-warning" style="color: red; font-weight: bold; display: none; margin-top: 1rem;"></div>
+        <button type="submit">Get Packing List</button>
+      </form>
+    </div>
+    <img id="palm" src="/Images/palm.png" alt="Palm tree" />
+  </div>
+  <% if (trips && trips.length> 0) { %>
+    <h2>Recent Trips</h2>
+    <ul>
+      <% trips.forEach(trip=> { %>
+        <li>
+          <strong>
+            <%= trip.city %>
+          </strong>: <%= trip.days %> days, <%= trip.avgTemp.toFixed(1) %>°F<br>
+              Items: <%= trip.packingList.join(", ") %>
+        </li>
+      <% }) %>
+    </ul>
+    <a href=" /history">View Full History</a>
+                <% } %>
+
+                  <script>
+                    const startInput = document.querySelector('input[name="startDate"]');
+                    const endInput = document.querySelector('input[name="endDate"]');
+                    const warningDiv = document.getElementById("date-warning");
+                    const form = document.querySelector("form");
+
+                    const today = new Date();
+                    const maxDate = new Date();
+                    maxDate.setDate(today.getDate() + 13);
+                    const maxDateStr = maxDate.toISOString().split("T")[0];
+
+                    startInput.max = maxDateStr;
+                    endInput.max = maxDateStr;
+
+                    function checkDates() {
+                      const start = new Date(startInput.value);
+                      const end = new Date(endInput.value);
+
+                      if (end < start) {
+                        warningDiv.textContent = "End date must be after the start date.";
+                        warningDiv.style.display = "block";
+                        return false;
+                      }
+
+                      warningDiv.style.display = "none";
+                      return true;
+                    }
+
+                    startInput.addEventListener("change", checkDates);
+                    endInput.addEventListener("change", checkDates);
+
+                    form.addEventListener("submit", (e) => {
+                      if (!checkDates()) {
+                        e.preventDefault();
+                      }
+                    });
+                  </script>
+</body>
+
+</html>

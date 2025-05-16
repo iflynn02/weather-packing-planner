@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Trip Packing List</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body id="packing-list-body">
+  <h1>Your Trip to <%= city %></h1>
+  <p><strong>Trip Length:</strong> <%= days %> days (<%= startDate %> to <%= endDate %>)</p>
+  <p><strong>Average Temp:</strong> <%= avgTemp %>°F</p>
+
+  <h2>Packing List</h2>
+  <ul id="packing-list">
+    <% packingList.forEach(item => { %>
+      <li><%= item %></li>
+    <% }) %>
+  </ul>
+
+  <a href="/history">See Trip History</a> |
+  <a href="/">Plan Another Trip</a>
+</body>
+</html>

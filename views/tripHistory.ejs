@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trip History</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Past Planned Trips</h1>
+  <ul>
+    <% trips.forEach(trip => { %>
+      <li style="display: flex; align-items: flex-start; gap: 1rem;">
+        <form action="/history/delete/<%= trip._id %>" method="POST">
+          <button id="delete-button" type="submit">Delete</button>
+        </form>
+        <div>
+          <strong><%= trip.city %></strong> — <%= trip.days %> days, <%= trip.avgTemp.toFixed(1) %>°F  
+          <br>Items: <%= trip.packingList.join(", ") %>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  
+  <a href="/">← Back to Planner</a>
+</body>
+</html>
